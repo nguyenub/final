@@ -1,0 +1,147 @@
+[
+  {
+    "key": "Finland",
+    "values":[
+      {
+        "axis":"GDP Per Capita",
+        "value":0.265084075
+      },
+      {
+        "axis":"Social Support",
+        "value":0.313946588
+      },
+      {
+        "axis":"Life Expectancy",
+        "value":0.195054402
+      },
+      {
+        "axis":"Human Freedom",
+        "value":0.117903066
+      },
+      {
+        "axis":"Generosity",
+        "value":0.030267062
+      },
+      {
+        "axis":"Perceptions of Corruption",
+        "value":0.077744807
+      }
+    ]
+  },
+{
+    "key":"Denmark",
+    "values":[
+      {
+        "axis":"GDP Per Capita",
+        "value":0.265655013
+      },
+      {
+        "axis":"Social Support",
+        "value":0.302151364
+      },
+      {
+        "axis":"Life Expectancy",
+        "value":0.19131771
+      },
+      {
+        "axis":"Human Freedom",
+        "value":0.113714944
+      },
+      {
+        "axis":"Generosity",
+        "value":0.048405686
+      },
+      {
+        "axis":"Perceptions of Corruption",
+        "value":0.078755282
+      }
+    ]
+  },
+{
+    "key":"Norway",
+    "values":[
+      {
+        "axis":"GDP Per Capita",
+        "value":0.280067758
+      },
+      {
+        "axis":"Social Support",
+        "value":0.297760211
+      },
+      {
+        "axis":"Life Expectancy",
+        "value":0.193487672
+      },
+      {
+        "axis":"Human Freedom",
+        "value":0.1134952
+      },
+      {
+        "axis":"Generosity",
+        "value":0.051006964
+      },
+      {
+        "axis":"Perceptions of Corruption",
+        "value":0.064182195
+      }
+    ]
+  },
+  {
+    "key":"Iceland",
+    "values":[
+      {
+        "axis":"GDP Per Capita",
+        "value":0.270960141
+      },
+      {
+        "axis":"Social Support",
+        "value":0.318869036
+      },
+      {
+        "axis":"Life Expectancy",
+        "value":0.201452975
+      },
+      {
+        "axis":"Human Freedom",
+        "value":0.116041626
+      },
+      {
+        "axis":"Generosity",
+        "value":0.069507167
+      },
+      {
+        "axis":"Perceptions of Corruption",
+        "value":0.023169056
+      }
+    ]
+  },
+  {
+    "key":"Netherlands",
+    "values":[
+      {
+        "axis":"GDP Per Capita",
+        "value":0.274047899
+      },
+      {
+        "axis":"Social Support",
+        "value":0.298782882
+      },
+      {
+        "axis":"Life Expectancy",
+        "value":0.196113074
+      },
+      {
+        "axis":"Human Freedom",
+        "value":0.109344327
+      },
+      {
+        "axis":"Generosity",
+        "value":0.063211622
+      },
+      {
+        "axis":"Perceptions of Corruption",
+        "value":0.058500196
+      }
+    ]
+  }
+]

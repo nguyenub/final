@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+  <script src="https://d3js.org/d3.v6.min.js"></script>
+
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>World Happiness | Project </title>
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Tangerine">
+    <link rel="stylesheet" href="/styleNew.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.17.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@4.17.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.12.2"></script>
+    <!-- import the webpage's javascript file -->
+    <script defer src="worldmap.js" type="module"></script>
+<!--     <script defer src="lineChart.js"></script> -->
+    <script defer src="radarChart.js"></script>
+    <script defer src="drawRadar.js"></script>
+    <script src="https://unpkg.com/topojson@3"></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/d3/6.1.1/d3.min.js"
+    ></script>
+  </head>
+
+  <body>
+
+
+    <main class="scroll-container">
+    <section class = "intro">
+      <img src ="https://cdn.glitch.com/cd026228-e628-4e0f-8298-bc49b2bff20b%2Fgiphy.gif?v=1606209623864" width="160" height="160">
+      <h1>
+        Is the World Happy?
+      </h1>
+      <h4>
+      Ivan Ip, Kim Nguyen, Yinzhe Ma, and Anna Guo
+      </h4>
+      <p class = "descript">
+        As society enters a hyper-competitive phase in the 21st century, our
+        generation is experiencing a historic amount of pressure and
+        competition. 
+        
+        Sometimes we find ourselves asking a seemingly simple yet important question: 
+        <br><br>
+          <b class = "question">Are we happy? And what makes us happy?</b>
+      </p>
+      <br><br><br><br>
+      
+      <div>
+        <svg class="arrow">
+          <a href="#world-map" id="hyperlink">
+            <path class="a1" d="M0 0 L30 22 L60 0"></path>
+            <path class="a2" d="M0 20 L30 42 L60 20"></path>
+            <path class="a3" d="M0 40 L30 62 L60 40"></path>  
+          </a>
+        </svg>
+      </div>
+      
+      
+      <p class = "descript" id = "data-source">
+        Data Source:
+        <a href="https://www.gallup.com/analytics/247355/gallup-world-happiness-report.aspx">Gallup World Poll</a>
+      </p>  
+    </section>
+      
+    <p id ="introduction">
+        <b class = "happiness">Happiness</b> is determined differently based on different people and different perspectives. 
+      Psychologists define happiness as a feeling of positive emotions of joy, interest, pride, life satisfaction and appreciation of moments. 
+      The state of global happiness refers to the state of well-being characterized by emotions ranging from immense contentment to intense joy.
+        <br><br><br><br><br>
+      However, there are certain factors that contribute to making a happy society. 
+      While individually, a person can feel happy receiving a gift, a person can also feel happy if content with their social and working connections. 
+      Therefore, 6 essential elements contribute to a happy society including: 
+      <br><br>
+      - GDP per capita
+      <br>
+      - Social Support
+      <br>
+      - Life Expectancy
+      <br>
+      - Human Freedom
+      <br>
+      - Generosity
+      <br>
+      - Perceptions of Corruption
+      </p>
+      <br><br><br><br>
+      
+      <div class = "center">
+        <svg class="arrow">
+          <a href="#world-map" id="hyperlink">
+            <path class="a1" d="M0 0 L30 22 L60 0"></path>
+            <path class="a2" d="M0 20 L30 42 L60 20"></path>
+            <path class="a3" d="M0 40 L30 62 L60 40"></path>  
+          </a>
+        </svg>
+      </div>
+      
+      <br><br>
+      
+    <section class ="world-map" id="world-map">
+      <h2>What are the happiest countries in the world today?</h2>
+      <p>
+        The happiness scores and rankings use data from the Gallup World Poll.
+        The scores are based on answers to the main life evaluation question
+        asked in the poll.
+      </p>
+      <div class="chart"></div>
+      <div id = "happiest">C1</div>
+        <div id = "saddest">C2</div>
+      
+      <!-- <div class="radarChart"></div>-->
+    </section>
+
+     <section class = "line-bar">
+      <h2>Are we getting happier?</h2>
+      <p id='lineInstructions'>
+        We are exploring the correlation betweena Happiness Score and these following factors: GDP per Capita, Life Expectancy, Freedom, Life
+        Satisfaction. We are currently exploring these factors in United States
+      </p>
+      <div class='row'>
+        <div class='column' id='columnInstr'>
+          <p id='selectIntruction'>Please select a factor to explore</p>
+          <p id='lineChartIntruction'>Click on a Happiness Score dot on the line chart to view the world-wide happiness ranking for each year</p>
+        </div>
+        <div class='column' id='columnChart'>
+          <div class="user-control">
+            <select id="line-type" class="form-control">
+              <option value="LE">Life Expectancy</option>
+              <option value="GDP">GDP per Capita</option>
+              <option value="HF">Human Freedom Index</option>
+              <option value="HS">Life Satisfaction Score</option>
+            </select>
+          </div>
+          <div class="line"></div>
+        </div>
+      </div>
+      <hr class='hidden'>
+      <div class="bar"></div>
+      <div id='tooltipBar' class='hidden'></div>
+       <div class="tooltip">
+  </div>
+    </section>
+
+    <section class='radar'>
+      <h2>
+       Let's look at the factors 
+      </h2>
+      <p class = "factors">
+        These factors contribute in evaluating the happiness in each country.
+        <br>
+        <br>
+        <b class = "highlight">GDP per Capita:</b> measures economic prosperity
+        <br>
+        <b class = "highlight">Social Support:</b> measures interaction with friends and family
+        <br>
+        <b class = "highlight">Life Expectancy:</b> measures health      
+        <br>
+        <b class = "highlight">Freedom:</b> measures personal, civil, and economic freedom  
+        <br>
+        <b class = "highlight">Generosity:</b> measures readiness or liberality in giving 
+        <br>
+        <b class = "highlight">Perceptions of Corruption:</b> measures trust in government
+      </p>
+      
+      <div class = "center">
+        
+        <div class="radarChart"></div>
+      </div>
+      
+    </section>
+      
+      
+    <section>
+      <h2 id="rankingTitle">
+       How have the rankings changed in the past 4 years? 
+      </h2>
+              <p>
+        We are examining the rankings for the happiest countries in the past 4
+        years based on their scores!
+      </p>
+      <div class ="center">
+    <div id="vis"></div>    
+      </div>
+
+      <script type="text/javascript">
+        var yourVlSpec = {
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "description": "Drag a rectangular brush to show (first 20) selected points in a table.",
+  "data": {
+  "values": [
+              { "Country": "Switzerland", "Year": 2015, "Rank": 1 },
+              { "Country": "Switzerland", "Year": 2016, "Rank": 2 },
+              { "Country": "Switzerland", "Year": 2017, "Rank": 4 },
+              { "Country": "Switzerland", "Year": 2018, "Rank": 5 },
+              { "Country": "Switzerland", "Year": 2019, "Rank": 6 },
+              { "Country": "Iceland", "Year": 2015, "Rank": 2 },
+              { "Country": "Iceland", "Year": 2016, "Rank": 3 },
+              { "Country": "Iceland", "Year": 2017, "Rank": 3 },
+              { "Country": "Iceland", "Year": 2018, "Rank": 4 },
+              { "Country": "Iceland", "Year": 2019, "Rank": 4 },
+              { "Country": "Denmark", "Year": 2015, "Rank": 3 },
+              { "Country": "Denmark", "Year": 2016, "Rank": 1 },
+              { "Country": "Denmark", "Year": 2017, "Rank": 2 },
+              { "Country": "Denmark", "Year": 2018, "Rank": 3 },
+              { "Country": "Denmark", "Year": 2019, "Rank": 2 },
+              { "Country": "Norway", "Year": 2015, "Rank": 4 },
+              { "Country": "Norway", "Year": 2016, "Rank": 4 },
+              { "Country": "Norway", "Year": 2017, "Rank": 1 },
+              { "Country": "Norway", "Year": 2018, "Rank": 2 },
+              { "Country": "Norway", "Year": 2019, "Rank": 3 },
+              { "Country": "Canada", "Year": 2015, "Rank": 5 },
+              { "Country": "Canada", "Year": 2016, "Rank": 6 },
+              { "Country": "Canada", "Year": 2017, "Rank": 7 },
+              { "Country": "Canada", "Year": 2018, "Rank": 7 },
+              { "Country": "Canada", "Year": 2019, "Rank": 9 },
+              { "Country": "Finland", "Year": 2015, "Rank": 6 },
+              { "Country": "Finland", "Year": 2016, "Rank": 5 },
+              { "Country": "Finland", "Year": 2017, "Rank": 5 },
+              { "Country": "Finland", "Year": 2018, "Rank": 1 },
+              { "Country": "Finland", "Year": 2019, "Rank": 1 },
+              { "Country": "Netherlands", "Year": 2015, "Rank": 7 },
+              { "Country": "Netherlands", "Year": 2016, "Rank": 7 },
+              { "Country": "Netherlands", "Year": 2017, "Rank": 6 },
+              { "Country": "Netherlands", "Year": 2018, "Rank": 6 },
+              { "Country": "Netherlands", "Year": 2019, "Rank": 5 },
+              { "Country": "Sweden", "Year": 2015, "Rank": 8 },
+              { "Country": "Sweden", "Year": 2016, "Rank": 10 },
+              { "Country": "Sweden", "Year": 2017, "Rank": 9 },
+              { "Country": "Sweden", "Year": 2018, "Rank": 9 },
+              { "Country": "Sweden", "Year": 2019, "Rank": 7 },
+              { "Country": "New Zealand", "Year": 2015, "Rank": 9 },
+              { "Country": "New Zealand", "Year": 2016, "Rank": 8 },
+              { "Country": "New Zealand", "Year": 2017, "Rank": 8 },
+              { "Country": "New Zealand", "Year": 2018, "Rank": 8 },
+              { "Country": "New Zealand", "Year": 2019, "Rank": 8 },
+              { "Country": "Australia", "Year": 2015, "Rank": 10 },
+              { "Country": "Australia", "Year": 2016, "Rank": 9 },
+              { "Country": "Australia", "Year": 2017, "Rank": 10 },
+              { "Country": "Australia", "Year": 2018, "Rank": 10 },
+              { "Country": "Austria", "Year": 2019, "Rank": 10 }
+            ]}
+
+,
+  "transform": [{
+    "window": [{"op": "row_number", "as": "row_number"}]
+  }],
+  "hconcat": [{
+    "selection": {
+      "brush": {
+        "type": "interval"
+      },   
+      "industry": {
+      "type": "multi", "fields": ["Country"], "bind": "legend"
+    }
+    },"width":500,"height":400,"title":{"text":"World Happiness Ranking","fontSize":25,"color":"darkslategray","subtitle":"Brush and hover over line graph or select a country from the legend","lineHeight":20},
+        "mark": {
+    "type": "line",
+    "point": { "filled": true,"size": 100},
+    "strokeWidth": 2,
+    "tooltip":true
+  },
+    "encoding": {
+      "x": {"field": "Year", "type": "ordinal"},
+      "y": {"field": "Rank", "type": "quantitative"},
+      "color": {
+        "condition": {"selection": "brush", "field": "Country", "type": "nominal"},
+        "value": "grey"
+      },
+          "opacity": {
+      "condition": {"selection": "industry", "value": 1},
+      "value": 0.2
+    }
+    }
+  }, {
+    "transform": [
+      {"filter": {"selection": "brush"}},
+      {"window": [{"op": "rank", "as": "rank"}]},
+      {"filter": {"field": "rank", "lt": 20}}
+    ],
+    "hconcat": [{
+      "width": 50,
+      "title": "Year",
+      "mark": "text",
+      "encoding": {
+        "text": {"field": "Year", "type": "nominal"},
+        "y": {"field": "row_number", "type": "ordinal", "axis": null}
+      }
+    }, {
+      "width": 150,
+      "title": "Country",
+      "mark": "text",
+      "encoding": {
+        "text": {"field": "Country", "type": "nominal"},
+        "y": {"field": "row_number", "type": "ordinal", "axis": null}
+      }
+    }, {
+      "width": 50,
+      "title": "Rank",
+      "mark": "text",
+      "encoding": {
+        "text": {"field": "Rank", "type": "nominal"},
+        "y": {"field": "row_number", "type": "ordinal", "axis": null}
+      }
+    }]
+  }],
+  "resolve": {"legend": {"color": "independent"}}
+}
+;
+
+        vegaEmbed("#vis", yourVlSpec);
+      </script>
+    </section>
+    <section class = "conclusion">
+      <br>
+      <h2 class = "final">
+        What does this mean? &#129488;
+      </h2>
+     
+      <p class ="final-thoughts">
+        
+        After examining <b class = "emphasize">145 countries</b> over the past 4 years, we have observed the trends in various factors that
+        contribute to happiness.
+        The average happiness score for 2019 is <b class = "emphasize">5.46 out of 10</b>.
+        We analyzed the Gallup Poll through multiple visualizations and saw that there were trends within the data. 
+        As we look into our own lives, we can also think of things that contribute to our overall view of happiness.
+        <br><br><br><br><br><br>As the world constantly evolves, <br><br>
+        <b class = "emphasize">What do you think will happen to happiness scores in the future?</b>
+
+      </p>
+      
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <h1 class = "conclude">
+        Thank you!
+      </h1>
+    </section>
+    </main>
+    
+  
+  </body>
+</html>

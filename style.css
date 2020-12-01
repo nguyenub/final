@@ -1,0 +1,174 @@
+/*map*/
+.country {
+    stroke: #fff;
+    stroke-width:1px;
+}
+.country:hover{
+  opacity: .6;
+}
+
+/* All the snapping stuff */
+.scroll-container {
+height: 100vh;
+overflow-y: scroll;
+scroll-snap-type: y mandatory;
+}
+
+section {
+scroll-snap-align: start;
+height: 110vh;
+padding: 50px;
+}
+
+.intro{
+  height: 630px;
+  text-align: center;
+  padding: 40px;
+  background-color: rgb(252, 252, 252);
+}
+
+.line-bar{
+  margin-top:10px;
+}
+
+
+img{
+  padding: 0;
+}
+
+.descript{
+  color: black;
+  font-family: "Andale Mono", AndaleMono, monospace; font-size: 18px;
+}
+
+a{
+  color: rgb(100, 145, 112);
+  text-decoration: none;
+}
+
+h4{
+  font-family: "Andale Mono", AndaleMono, monospace; font-size: 20pt;
+  font-weight: bolder;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+h1 {
+  font-family: "Andale Mono", AndaleMono, monospace;
+  text-shadow: 2px 2px 2px #ccc;
+  font-size: 55pt;
+  font-weight: bolder;
+  color: rgb(100, 145, 112);
+  line-height: 30px;
+}
+
+h2 {
+  text-align: center;
+  font-family: "Andale Mono", AndaleMono, monospace;
+  margin-top: 10px;
+  background-color: rgb(100, 145, 112,0.2);
+  padding: 15px;
+  font-size: 25pt;
+}
+
+p {
+  font-family: "Andale Mono", AndaleMono, monospace; font-size: 12pt;
+  font-size: 14pt;
+  text-align: center;
+  margin-left: 25px;
+  margin-right: 25px;
+  color: #606c76;
+;
+}
+
+#data-source{
+  position: absolute;
+  width: 100px;
+  background-color: rgb(100, 145, 112,0.2);
+  padding: 6px;
+  font-size: 10pt;
+  bottom: 0;
+  left:0;
+}
+
+.world-map{
+  background-color: rbg(194, 207, 200);
+}
+.line-bar{
+  height: 160vh;
+}
+
+body{
+  background-color: rgb(252, 252, 252);
+}
+
+
+
+.line,.bar,.user-control,h3,#vis{
+  margin-left: 120px;
+}
+
+#instructions{
+    background-color: rgb(100, 145, 112,0.2);
+    padding:10px;
+}
+
+#projectUpdate{
+  margin-left:10px;
+}
+
+/* set arrow positioning */
+.arrow {
+	width: 60px;
+	height: 92px;
+
+	left: 42%;
+	margin-left: 0px;
+	bottom: 15%;
+  z-index:999;
+}
+/* set arrow styles */
+.arrow path {
+	stroke: rgb(100, 145, 112);
+	stroke-width: 7px;
+	fill: transparent;	
+	animation: down 2s infinite;
+}
+/* arrow keyframe animation */
+@keyframes down{
+0% { opacity:0 }
+25% { opacity:1 }
+75% { opacity:0 }
+100% { opacity:0 }
+}
+/* arrow animation delay */
+.arrow path.a1{	animation-delay:-1s; }
+.arrow path.a2{	animation-delay:-.5s; }
+.arrow path.a3{	animation-delay:0s; }
+
+#about-radar{
+  position: absolute;
+  left: 850px;
+  top: 3250px;
+  padding: 10px;
+}
+
+#about-radar2{
+  position: absolute;
+  left: 1070px;
+  top: 3250px;
+  padding: 10px;
+}
+
+.counter {
+  font-size: 50pt;
+  font-family: "Andale Mono", AndaleMono, monospace;
+  padding: 2rem;
+  transition: --percent 2s;
+  --temp: calc(var(--percent) * 10);
+  --v1: max(var(--temp) - 0.5, 0);
+  --v2: max((var(--temp) - var(--v1)) * 10 - 0.5, 0);
+  counter-reset: v1 var(--v1) v2 var(--v2);
+}
+.counter::before {
+  content: counter(v1) "." counter(v2, decimal-leading-zero);
+}
